@@ -6,8 +6,10 @@ import { BiMicrophone } from "react-icons/bi";
 const Logo = () => {
   return (
     <img
-      className="gimage"
+      className="gimage" 
+
       src="https://www.google.co.in/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+      
       alt="google"
     />
   );
