@@ -79,7 +79,7 @@ import { actionType } from '../context/reducer';
             className='w-40 bg-gray-70 shadow-xl rounded-lg flex-col absolute top-12 right-1 ' >
            {user && user.email==="souravmisra4125@gmail.com" && (
              <Link to={"/createItem"}>
-               <p className='px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-200 transition-all duration-100 ease-in-out text-textColor text-base'>New Item <MdAdd/></p>
+               <p className='px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-200 transition-all duration-100 ease-in-out text-textColor text-base'onClick={() => setisMenu(false)}>New Item <MdAdd/></p>
              </Link>
            )}
            <p  className='px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-200 transition-all duration-100 ease-in-out text-textColor text-base 'onClick={logout}>LogOut <MdLogout/> </p>
@@ -115,15 +115,15 @@ import { actionType } from '../context/reducer';
             className='w-40 bg-gray-70 shadow-xl rounded-lg flex-col absolute top-12 right-1 ' >
            {user && user.email==="souravmisra4125@gmail.com" && (
              <Link to={"/createItem"}>
-               <p className='flex items-center gap-3 cursor-pointer hover:bg-slate-200 transition-all duration-100 ease-in-out text-textColor text-base px-4 py-2' >New Item <MdAdd/></p>
+               <p className='flex items-center gap-3 cursor-pointer hover:bg-slate-200 transition-all duration-100 ease-in-out text-textColor text-base px-4 py-2' onClick={() => setisMenu(false)} >New Item <MdAdd/></p>
              </Link>
            )}
               <ul  
                  className='flex flex-col  '>
-            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2'>Home</li>
-            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2'>Menu</li>
-            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2'>About Us</li>
-            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2'>Service</li>
+            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2'onClick={() => setisMenu(false)}>Home</li>
+            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2'onClick={() => setisMenu(false)}>Menu</li>
+            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2'onClick={() => setisMenu(false)}>About Us</li>
+            <li className='text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2'onClick={() => setisMenu(false)}>Service</li>
             </ul>
            <p  className='m-2 p-2 rounded-md shadow-md flex items-center justify-center bg-gray-200 gap-3 cursor-pointer hover:bg-slate-400 transition-all duration-100 ease-in-out text-textColor text-base ' onClick={logout}>LogOut <MdLogout/> </p>
       </motion.div>
