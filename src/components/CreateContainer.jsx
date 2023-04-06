@@ -132,7 +132,7 @@ const CreateContainer = () => {
     setImageAsset(null);
     setCalories("")
     setPrice("")
-    setCategory("Select Category")
+    setCategory(null)
   }
 
 
