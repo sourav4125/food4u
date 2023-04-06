@@ -4,6 +4,7 @@ export const actionType={
     // action type is set User
 
     SET_USER:'SET_USER',
+    SET_FOOD_ITEMS:'SET_FOOD_ITEMS',
 
 }
 
@@ -18,6 +19,13 @@ const reducer=(state,action)=>{
                     user:action.user //updating userinformation to the state
 
             }
+
+            case actionType.SET_FOOD_ITEMS:
+                return {
+                    ...state,   
+                        foodItems:action.foodItems 
+    
+                }
             default:
                 return state;
     }

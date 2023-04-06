@@ -12,6 +12,9 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
+import { getAllFoodItems, saveItem } from '../utils/firebaseFunctions'
+import { actionType } from '../context/reducer'
+import { useStateValue } from '../context/StateProvider'
 
 const CreateContainer = () => {
 
@@ -25,6 +28,7 @@ const CreateContainer = () => {
   const [alertStatus, setAlertStatus] = useState("danger")
   const [msg,SetMsg]=useState(null);
   const [isloading,setIsLoading] = useState(false)
+  const [{foodItems},dispatch]=useStateValue()
 
   const uploadImage=(e)=>{
       setIsLoading(true);
@@ -58,11 +62,92 @@ const CreateContainer = () => {
       })
   }
   const deleteImage=()=>{
+    setIsLoading(true)
+    const deleteRef=ref(storage,imageAsset);
+    deleteObject(deleteRef).then(()=>{
+      setImageAsset(null);
+      setIsLoading(false);
+      setFields(true)
+      SetMsg('Image deleted successfully  😊 ');
+      setAlertStatus('success')
+      setTimeout(() => {
+          setFields(false)
+      }, 4000);
+    })
 
   }
   const saveDetails=()=>{
+    setIsLoading(true);
+    try {
+      if(!title || !calories||!imageAsset||!price||!category){
+         
+        setFields(true);
+        SetMsg("Required Fields can't be empty");
+        setAlertStatus('danger')
+        //remove alert after 4 seconds so for that settimeout
+        setTimeout(()=>{
+          setFields(false)
+          setIsLoading(false)
+        },4000)
+      }else{
+        const data={
+          id:`${Date.now()}}`,
+          title: title,
+          imageURL: imageAsset,
+          category: category,
+          calories:calories,
+          qty:1,
+          price:price,
 
+        }
+        saveItem(data);
+        setIsLoading(false);
+        setFields(true)
+        SetMsg('Data uploaded successfully  😊 ');
+        
+        setAlertStatus('success')
+        setTimeout(() => {
+            setFields(false)
+            clearData()
+        }, 4000);
+        clearData()
+      }
+      
+    } catch (error) {
+      console.log(error);
+      setFields(true);
+      SetMsg('Error while uploading: Try Again 🙇');
+      setAlertStatus('danger')
+      //remove alert after 4 seconds so for that settimeout
+      setTimeout(()=>{
+        setFields(false)
+        setIsLoading(false)
+      },4000)
+    }
+    fetchData()
   }
+
+  const clearData = () => {
+    setTitle("");
+    setImageAsset(null);
+    setCalories("")
+    setPrice("")
+    setCategory("Select Category")
+  }
+
+
+  const fetchData=async ()=>{
+    await getAllFoodItems().then(data=>{
+
+        // console.log(data)
+        dispatch({
+        type:actionType.SET_FOOD_ITEMS,
+        foodItems:data
+        })
+    })
+  }
+
+
 
   return (
     <div className='w-full min-h-screen  flex items-center justify-center'> 
