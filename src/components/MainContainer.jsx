@@ -4,6 +4,7 @@ import {motion} from "framer-motion"
 import { MdChevronLeft,MdChevronRight } from 'react-icons/md';
 import RowContainer from './RowContainer';
 import { useStateValue } from '../context/StateProvider';
+import MenuContainer from './MenuContainer';
 
 
 
@@ -25,18 +26,20 @@ useEffect(()=>{},[scrollValue])
             Our Fresh & Healthy Fruits
           </p>
           <div className='hidden md:flex gap-3 items-center '>
-            <motion.div whileTap={{scale:0.75}}  className='w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer transition-all duration-100 ease-in-out hover:shadow-lg  flex items-center justify-center'onClick={()=>setScrollValue(-200)}>
+            <motion.div whileTap={{scale:0.75}}  className='w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer ease-in-out hover:shadow-lg  flex items-center justify-center'onClick={()=>setScrollValue(-900)}>
               <MdChevronLeft className='text-xl  text-white'/>
             </motion.div>
-            <motion.div whileTap={{scale:0.75}} className='w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer transition-all duration-100 ease-in-out hover:shadow-lg  flex items-center justify-center' onClick={()=>setScrollValue(200)}>
+            <motion.div whileTap={{scale:0.75}} className='w-8 h-8 rounded-lg bg-orange-300 hover:bg-orange-500 cursor-pointer  ease-in-out hover:shadow-lg  flex items-center justify-center' onClick={()=>setScrollValue(900)}>
               <MdChevronRight className='text-xl  text-white'/>
             </motion.div>
           </div>
         </div>
         <RowContainer  scrollValue={scrollValue}
-         flag={true} data={foodItems?.filter(n=>n.category==='Fruits') }/>
+         flag={true} data={foodItems?.filter(n=>n.category==='fruits') }/>
 
       </section>
+
+     <MenuContainer/>
     </div>
   )
 }
