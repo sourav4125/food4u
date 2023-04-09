@@ -4,7 +4,7 @@ import { motion  } from 'framer-motion';
 import { useState } from 'react';
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
-let items=[];
+// let items=[];
 const CartItem = ({item,setFlag,flag}) => {
     const [{cartItems},dispatch]=useStateValue();
         const [qty, setQty] = useState(item.qty)
